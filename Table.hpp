@@ -1,5 +1,6 @@
 #ifndef TABLE_HPP
 #define TABLE_HPP
+#define DEBUG
 
 #include <string>
 #include <utility>
@@ -20,6 +21,23 @@ class Person {
     std::string record_book_number; // номер зачетной книжки
     std::pair<std::string, int> *subjects_and_marks; // названия предметов и оценки по каждому предмету в каждой сессии
     std::string assignment; // конкретное задание, вариант которого определяется 2-мя последними цифрами зачетной книжки (шифр)
+};
+
+
+
+
+class Table {
+    std::map<std::string, Person> records;
+    std::pair<std::string, int> **subjects_and_marks_list;
+    public:
+    enum Input {
+        TERMINAL,
+        FILE
+    };
+    #ifdef DEBUG
+    bool GenSMList = false; 
+    Table(Input);
+    #endif
 };
 
 #endif
