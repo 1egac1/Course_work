@@ -1,12 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <utility>
-#include <map> 
-#include <cstdlib>
-#include "./Table.hpp"
-
-
+#include "headers.hpp"
 
 int main (int argc, char **argv){
     std::cout << "Hello world!" << std::endl;

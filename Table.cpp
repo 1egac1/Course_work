@@ -1,4 +1,4 @@
-#include "./Table.hpp"
+#include "headers.hpp"
 Table::Table(Input iway) {
     switch (iway)
     {

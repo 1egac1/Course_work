@@ -2,8 +2,7 @@
 #define TABLE_HPP
 #define DEBUG
 
-#include <string>
-#include <utility>
+#include "headers.hpp"
 
 struct Date {
     int day;
@@ -23,9 +22,6 @@ class Person {
     std::string assignment; // конкретное задание, вариант которого определяется 2-мя последними цифрами зачетной книжки (шифр)
 };
 
-
-
-
 class Table {
     std::map<std::string, Person> records;
     std::pair<std::string, int> **subjects_and_marks_list;
@@ -36,8 +32,8 @@ class Table {
     };
     #ifdef DEBUG
     bool GenSMList = false; 
-    Table(Input);
     #endif
+    Table(Input);
 };
 
 #endif
