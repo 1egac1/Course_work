@@ -35,6 +35,10 @@ class Person {
 class Table {
     std::map<std::string, Person> records;
     std::pair<std::string, int> **subjects_and_marks_list;
+
+    void file_input();
+    void cmd_input();
+    void file_input(char* path_to_file);
     public:
     enum Input {
         TERMINAL,
