@@ -17,7 +17,7 @@ struct Date {
  * Строка для хранения данных об ученике
  * Оценки хранятся в массиве типа std::pair<std::string, uint_8>
  */
-class Person {
+struct Person {
     std::string full_name; // Ф.И.О. студента
     Date birth_date; // дата рождения
     uint16_t admission_year; // год поступления в институт
@@ -36,7 +36,7 @@ class Table {
     std::map<std::string, Person> records;
     std::pair<std::string, int> **subjects_and_marks_list;
 
-    void file_input();
+    void file_input(std::string&);
     void cmd_input();
     void file_input(char* path_to_datafile, char* path_to_marksfile);
     public:

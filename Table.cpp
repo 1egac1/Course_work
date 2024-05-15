@@ -4,7 +4,10 @@ Table::Table(Input iway) {
     {
     case Input::FILE: // Reading form file impltmentation
     {
-        file_input();
+        std::string filename;
+        std::cout << "Enter the name of the CSV file: ";
+        std::getline(std::cin, filename);
+        file_input(filename);
         break;
     }
     case Input::TERMINAL: // reading from command line implementation
@@ -18,25 +21,21 @@ Table::Table(Input iway) {
     }
 }
 
-void Table::file_input(char path_to_datafile[], char path_to_marksfile[]) {
-        // Opening files
-        std::ifstream datafile, marksfile;
-        datafile.open(path_to_datafile, std::ios::in);
-        marksfile.open(path_to_marksfile, std::ios::in);
-
-        if (datafile.is_open() and marksfile.is_open()) {
-            boost::char_separator<char> separator(",");
-            while(!datafile.eof()) {
-                std::string line;
-                std::getline(datafile, line);
-                boost::tokenizer<boost::char_separator<char>> tok(line, separator);
-            }
-        }
-        datafile.close();
-}
-
-void Table::file_input() {
-    file_input("./data/data.csv", "./data/data_marks.csv");
+void Table::file_input(std::string& filename) {
+    csv::CSVReader in(filename);
+    for (csv::CSVRow& row: in) { // Input iterator
+        std::string record_book_number = row[8];
+        records[record_book_number].full_name = row[0];
+        records[record_book_number].birth_date.day = std::stoi(row[1]);
+        records[record_book_number].birth_date.month = std::stoi(row[2]);
+        records[record_book_number].birth_date.year = std::stoi(row[3]);
+        records[record_book_number].admission_year = std::stoi(row[4]);
+        records[record_book_number].faculty = row[5];
+        records[record_book_number].department = row[6];
+        records[record_book_number].group = row[7];
+        records[record_book_number].record_book_number = row[8];
+        records[record_book_number].assignment = record_book_number.substr(record_book_number.length() - 2);
+    }
 }
 
 void Table::cmd_input() {
