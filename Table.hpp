@@ -38,7 +38,7 @@ class Table {
 
     void file_input();
     void cmd_input();
-    void file_input(char* path_to_file);
+    void file_input(char* path_to_datafile, char* path_to_marksfile);
     public:
     enum Input {
         TERMINAL,
